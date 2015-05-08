@@ -24,12 +24,15 @@ public class FavoritePastries {
 	 *	Use a HashMap to store the relationship
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
+	public HashMap<Pastry, Integer> favorites;
 
 
 	public FavoritePastries() {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		favorites = new HashMap<Pastry, Integer>();
+
 	}
 
 	/* 
@@ -51,6 +54,7 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		favorites.put(pastry, new Integer(rating));
 	}
 
 	/* 
@@ -69,6 +73,10 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
+		if (favorites.containsKey(pastry)) {
+			favorites.remove(pastry);
+			return true;
+		}
 		return false;
 	}
 
@@ -90,6 +98,9 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
+		if (favorites.containsKey(pastry)) {
+			return favorites.get(pastry);
+		}
 		return -1;
 	}
 
@@ -113,7 +124,31 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return null;
+
+		Set<Pastry> pastries = favorites.keySet();
+		ArrayList<Pastry> ratedPastries = new ArrayList<Pastry>();
+
+		/*
+		Iterator<Pastry> it = pastries.iterator();
+
+		while (it.hasNext()) {
+			Integer value = favorites.get(it.next());
+			if (value.intValue() != rating) {
+				favorites.remove(it.next());
+			}
+		}
+		*/
+
+		for (Pastry p : pastries) {
+			
+			if (favorites.get(p).intValue() == rating) {
+				ratedPastries.add(p);
+			} 
+			System.out.println(p.toString());
+		}
+
+
+		return ratedPastries;
 	}
 
 }
