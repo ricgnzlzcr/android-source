@@ -9,7 +9,7 @@ package com.bloc.statics.appliances;
 import com.bloc.statics.PowerSupply;
 
 public abstract class Appliance extends Object {
-	PowerSupply mPowerSupply;
+	protected static final PowerSupply mPowerSupply = new PowerSupply();
 
 	String mBrandName;
 	String mSerialNumber;
@@ -60,7 +60,7 @@ public abstract class Appliance extends Object {
 	 */
 	public void plugIn() {
 		if (mPowerSupply == null) {
-			mPowerSupply = new PowerSupply();
+			//mPowerSupply = new PowerSupply();
 		}
 		if (!mPowerSupply.hasAppliance(this)) {
 			mPowerSupply.plugAppliance(this);
