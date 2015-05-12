@@ -15,7 +15,7 @@ public class Main extends Object {
 		 *	Thread, use the ImageGetter class.
 		/************************************************/
 
-		try {
+		/*try {
 			File existingImage = new File("google_logo.png");
 			if (existingImage.exists()) {
 				existingImage.delete();
@@ -35,16 +35,20 @@ public class Main extends Object {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
-		}
+		} */
+
+		new ImageGetter("google_logo.png", false).start();
 
 		/************************************************
 		 *	ASSIGNMENT:
 		 *	Perform the previous block of code on a separate
 		 *	Thread, use the ImageGetter class.
 		/************************************************/
-
+		
 		File logo = new File("google_logo.png");
 		boolean exists = false;
+		
+
 		try {
 			exists = logo.exists();
 		} catch (Exception e) {
